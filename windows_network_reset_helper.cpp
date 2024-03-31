@@ -49,9 +49,9 @@ int main() {
                 continue;
             }
             std::cout << std::chrono::system_clock::now() << " Internet is not connected, restarting..." << std::endl;
-            hr = irm->lpVtbl->SetSystemRadioState(irm, 1);
-            std::this_thread::sleep_for(std::chrono::seconds(60));
             hr = irm->lpVtbl->SetSystemRadioState(irm, 0);
+            std::this_thread::sleep_for(std::chrono::seconds(60));
+            hr = irm->lpVtbl->SetSystemRadioState(irm, 1);
             std::cout << std::chrono::system_clock::now() << " Restarted" << std::endl;
             std::this_thread::sleep_for(std::chrono::seconds(60));
             irm->lpVtbl->Release(irm);
